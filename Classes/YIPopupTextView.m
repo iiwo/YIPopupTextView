@@ -263,11 +263,11 @@ typedef enum {
             switch (buttonStyle) {
                 case YIPopupTextViewButtonStyleRightCancel:
                     buttonX = _popupView.bounds.size.width-TEXTVIEW_INSETS.right-(1-buttonRisingRatio)*CLOSE_IMAGE_WIDTH;
-                    autoresizing = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+                    autoresizing = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
                     break;
                 case YIPopupTextViewButtonStyleRightCancelAndDone:
                     buttonX = _popupView.bounds.size.width-TEXTVIEW_INSETS.right-(2-buttonRisingRatio)*CLOSE_IMAGE_WIDTH;
-                    autoresizing = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+                    autoresizing = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
                     break;
                 default:
                     buttonX = TEXTVIEW_INSETS.left-(buttonRisingRatio)*CLOSE_IMAGE_WIDTH;
@@ -275,7 +275,7 @@ typedef enum {
                     break;
             }
             
-            _closeButton.frame = CGRectMake(buttonX, _popupView.bounds.size.height - TEXTVIEW_INSETS.top-buttonRisingRatio*CLOSE_IMAGE_WIDTH, CLOSE_IMAGE_WIDTH, CLOSE_IMAGE_WIDTH);
+            _closeButton.frame = CGRectMake(buttonX, _popupView.bounds.size.height - TEXTVIEW_INSETS.bottom-2*buttonRisingRatio*CLOSE_IMAGE_WIDTH, CLOSE_IMAGE_WIDTH, CLOSE_IMAGE_WIDTH);
             _closeButton.showsTouchWhenHighlighted = YES;
             [_closeButton addTarget:self action:@selector(handleCloseButton:) forControlEvents:UIControlEventTouchUpInside];
             _closeButton.autoresizingMask = autoresizing;
@@ -306,9 +306,9 @@ typedef enum {
                 buttonX = buttonX = _popupView.bounds.size.width-TEXTVIEW_INSETS.right/2-CLOSE_IMAGE_WIDTH;
             }
 
-            UIViewAutoresizing autoresizing = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+            UIViewAutoresizing autoresizing = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
             
-            _acceptButton.frame = CGRectMake(buttonX, _popupView.bounds.size.height - TEXTVIEW_INSETS.top-buttonRisingRatio*CLOSE_IMAGE_WIDTH, CLOSE_IMAGE_WIDTH, CLOSE_IMAGE_WIDTH);
+            _acceptButton.frame = CGRectMake(buttonX, _popupView.bounds.size.height - TEXTVIEW_INSETS.bottom-2*buttonRisingRatio*CLOSE_IMAGE_WIDTH, CLOSE_IMAGE_WIDTH, CLOSE_IMAGE_WIDTH);
             _acceptButton.showsTouchWhenHighlighted = YES;
             [_acceptButton addTarget:self action:@selector(handleAcceptButton:) forControlEvents:UIControlEventTouchUpInside];
             _acceptButton.autoresizingMask = autoresizing;
